@@ -43,9 +43,9 @@ class SearchEmployeeContainer extends Component {
         }
 
         filteredResults = filterThis.filter(employee => {
-            let employeeName = employee.name.first.toLowerCase();
+            let fullName = `${employee.name.first.toLowerCase()} ${employee.name.last.toLowerCase()}`
 
-            return employeeName.includes(`${event.target.value}`);
+            return fullName.includes(`${event.target.value}`);
             
         });
 
@@ -76,7 +76,7 @@ class SearchEmployeeContainer extends Component {
     render() {
         return (
             <div>
-                <input type="text" className="text-center search-box" placeholder="Search Employee Name" onChange={this.handleInputChange}/>
+                <input type="text" className="text-center search-box" placeholder="Search by Employee Name" onChange={this.handleInputChange}/>
                 <ResultsTable results={this.state.newResults} sort={this.handleSortChange} sorted={this.state.aToZ}/>
             </div>
         )
