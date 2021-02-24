@@ -7,7 +7,8 @@ class SearchEmployeeContainer extends Component {
     state = {
         search: "",
         results: [],
-        newResults: []
+        newResults: [],
+        aToZ: true
     };
 
     componentDidMount() {
@@ -16,14 +17,29 @@ class SearchEmployeeContainer extends Component {
 
     searchEmployees = () => {
         API.search()
-          .then(res => this.setState({ results: res.data.results, newResults: res.data.results }))
+          .then(res => {
+            let results = res.data.results.sort(((a, b) => {
+                if(a.name.first < b.name.first) { return -1; }
+                else if(a.name.first > b.name.first) { return 1; }
+                else {return 0};
+            }))
+            return this.setState({ results: results, newResults: results })
+          })
           .catch(err => console.log(err));
     };
 
     handleInputChange = event => {
         event.preventDefault();
-        
-        let filteredResults = this.state.results.filter(employee => {
+        let filterThis;
+        let filteredResults;
+
+        if (this.state.aToZ) {
+            filterThis = this.state.results;
+        } else {
+            filterThis = this.state.results.slice().reverse();
+        }
+
+        filteredResults = filterThis.filter(employee => {
             let employeeName = employee.name.first.toLowerCase();
 
             return employeeName.includes(`${event.target.value}`);
@@ -33,6 +49,24 @@ class SearchEmployeeContainer extends Component {
         this.setState({
             newResults: filteredResults
         })
+    }
+
+    handleSortChange = event => {
+        event.preventDefault();
+
+        let sorted = this.state.newResults.reverse();
+
+        if (this.state.aToZ) {
+            this.setState({
+                newResults: sorted,
+                aToZ: false
+            })
+        } else {
+            this.setState({
+                newResultes: sorted,
+                aToZ: true
+            })
+        }
 
     }
     
@@ -40,7 +74,7 @@ class SearchEmployeeContainer extends Component {
         return (
             <div>
                 <input type="text" placeholder="Search Employee Name" onChange={this.handleInputChange}/>
-                <ResultsTable results={this.state.newResults} />
+                <ResultsTable results={this.state.newResults} sort={this.handleSortChange} sorted={this.state.aToZ}/>
             </div>
         )
     }
