@@ -1,0 +1,12 @@
+.header-container h1 {
+    font-family: 'Bree Serif', serif;
+}
+
+.header-container p {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header-container {
+    background-color: #096192 !important;
+    color: #fcfdfd;
+}
