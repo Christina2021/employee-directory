@@ -21,6 +21,8 @@ class SearchEmployeeContainer extends Component {
             let results = res.data.results.sort(((a, b) => {
                 if(a.name.first < b.name.first) { return -1; }
                 else if(a.name.first > b.name.first) { return 1; }
+                else if(a.name.last < b.name.last) { return -1; }
+                else if(a.name.last > b.name.last) { return 1; }
                 else {return 0};
             }))
             return this.setState({ results: results, newResults: results })
