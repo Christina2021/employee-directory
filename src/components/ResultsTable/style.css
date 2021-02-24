@@ -1,0 +1,12 @@
+table {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+table img {
+    border: 2px solid #096192;
+    border-radius: 15px;
+}
+
+table .name-field {
+    font-weight: bold;
+}

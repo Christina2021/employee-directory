@@ -1,16 +1,19 @@
 import React from 'react';
 import Result from '../Result';
+import "./style.css";
 
 function ResultsTable(props) {
     return (
         <div className="container">
-            <table className="table">
+            <table className="table table-striped">
                 <thead className="table-success">
-                    <th scope="col">Image</th>
-                    <th scope="col">Name <i className={props.sorted ? "fas fa-sort-up" : "fas fa-sort-down"} onClick={props.sort}></i></th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">DOB</th>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name <i className={props.sorted ? "fas fa-sort-up" : "fas fa-sort-down"} onClick={props.sort}></i></th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">DOB</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {props.results.map(result => {
