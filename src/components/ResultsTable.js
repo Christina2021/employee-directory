@@ -17,7 +17,7 @@ function ResultsTable(props) {
                     
                     return (
                     <tr key={result.id.value}>
-                        <td scope="row"><img alt={`${result.name.first} ${result.name.last}`} src={result.picture.thumbnail}/></td>
+                        <th scope="row"><img alt={`${result.name.first} ${result.name.last}`} src={result.picture.thumbnail}/></th>
                         <td>{`${result.name.first} ${result.name.last}`} </td>
                         <td>{result.phone}</td>
                         <td>{result.email}</td>
