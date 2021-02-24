@@ -1,8 +1,14 @@
 import React from 'react';
-import SearchEmployeeContainer from "./components/SearchEmployeeContainer"
+import Header from './components/Header';
+import SearchEmployeeContainer from "./components/SearchEmployeeContainer";
 
 function App() {
-  return <SearchEmployeeContainer />;
+  return (
+    <div>
+      <Header />
+      <SearchEmployeeContainer />
+    </div>    
+  );
 }
 
 export default App;
