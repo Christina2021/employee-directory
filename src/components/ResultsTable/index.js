@@ -1,10 +1,11 @@
 import React from 'react';
+import Result from '../Result';
 
 function ResultsTable(props) {
     return (
         <div className="container">
             <table className="table">
-                <thead>
+                <thead className="table-success">
                     <th scope="col">Image</th>
                     <th scope="col">Name <i className={props.sorted ? "fas fa-sort-up" : "fas fa-sort-down"} onClick={props.sort}></i></th>
                     <th scope="col">Phone</th>
@@ -14,17 +15,17 @@ function ResultsTable(props) {
                 <tbody>
                 {props.results.map(result => {
                     let dob = new Date(result.dob.date);
-                    
                     return (
-                    <tr key={result.id.value}>
-                        <th scope="row"><img alt={`${result.name.first} ${result.name.last}`} src={result.picture.thumbnail}/></th>
-                        <td>{`${result.name.first} ${result.name.last}`} </td>
-                        <td>{result.phone}</td>
-                        <td>{result.email}</td>
-                        <td>{`${dob.getMonth()+1}-${dob.getDate()}-${dob.getFullYear()}`}</td>
-                    </tr>
-                    )}
-                )}
+                        <Result 
+                            key = {result.id.value}
+                            name = {`${result.name.first} ${result.name.last}`}
+                            img = {result.picture.thumbnail}
+                            phone = {result.phone}
+                            email = {result.email}
+                            dob = {`${dob.getMonth()+1}-${dob.getDate()}-${dob.getFullYear()}`}
+                        />
+                    )                   
+                })}
                 </tbody>
             </table>
         </div>
