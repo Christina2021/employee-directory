@@ -1,7 +1,6 @@
 import React from 'react';
 
 function ResultsTable(props) {
-    console.log(props);
     return (
         <div className="container">
             <ul>
