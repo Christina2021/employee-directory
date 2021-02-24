@@ -3,7 +3,7 @@ import "./style.css";
 
 function Header() {
     return (
-        <div className="jumbotron text-center header-container">
+        <div className="jumbotron text-center header-container mb-0">
             <h1>Employee Directory <i className="fas fa-briefcase"></i></h1>
             <p>Sort the employees by the name column, or further search for employees by using the search box!</p>
         </div>

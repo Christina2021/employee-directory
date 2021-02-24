@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import API from "../utils/API";
-import ResultsTable from "../components/ResultsTable"
+import API from "../../utils/API";
+import ResultsTable from "../ResultsTable";
+import "./style.css";
 
 class SearchEmployeeContainer extends Component {
     // 2 arrays: one for initial results given into "results"; the other for filtered results given into "newResults"
@@ -75,7 +76,7 @@ class SearchEmployeeContainer extends Component {
     render() {
         return (
             <div>
-                <input type="text" placeholder="Search Employee Name" onChange={this.handleInputChange}/>
+                <input type="text" className="text-center search-box" placeholder="Search Employee Name" onChange={this.handleInputChange}/>
                 <ResultsTable results={this.state.newResults} sort={this.handleSortChange} sorted={this.state.aToZ}/>
             </div>
         )
